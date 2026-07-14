@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alex Rivera — Director of Data &amp; Analytics</title>
+<style>
+  :root {
+    --navy: #0f2438;
+    --navy-light: #1c3a57;
+    --teal: #14b8a6;
+    --teal-dark: #0d9488;
+    --slate: #475569;
+    --slate-light: #64748b;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --border: #e2e8f0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--slate);
+    background: var(--bg);
+    line-height: 1.6;
+  }
+  h1, h2, h3, h4 { color: var(--navy); line-height: 1.25; }
+  a { color: var(--teal-dark); text-decoration: none; }
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 88px 0; }
+  .section-title { font-size: 2rem; margin-bottom: 8px; }
+  .section-sub { color: var(--slate-light); margin-bottom: 40px; max-width: 640px; }
+  .accent-bar { width: 56px; height: 4px; background: var(--teal); border-radius: 2px; margin-bottom: 20px; }
+
+  /* ---------- Nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(15, 36, 56, 0.96);
+    backdrop-filter: blur(8px);
+  }
+  .nav-inner {
+    max-width: 1080px; margin: 0 auto; padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo { font-weight: 700; color: #fff; font-size: 1.1rem; letter-spacing: 0.02em; }
+  .nav-logo span { color: var(--teal); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a {
+    color: #cbd5e1; font-size: 0.95rem; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+  .hamburger {
+    display: none; background: none; border: none; cursor: pointer;
+    flex-direction: column; gap: 5px; padding: 8px;
+  }
+  .hamburger span { display: block; width: 24px; height: 2px; background: #fff; transition: 0.3s; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: #e2e8f0;
+    padding: 120px 0 130px;
+  }
+  .hero .kicker {
+    color: var(--teal); font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; font-size: 0.85rem; margin-bottom: 16px;
+  }
+  .hero h1 { color: #fff; font-size: clamp(2.4rem, 6vw, 3.6rem); margin-bottom: 12px; }
+  .hero .role { font-size: clamp(1.15rem, 3vw, 1.5rem); color: #94a3b8; font-weight: 500; margin-bottom: 24px; }
+  .hero p.intro { max-width: 620px; font-size: 1.05rem; margin-bottom: 36px; }
+  .btn {
+    display: inline-block; padding: 13px 28px; border-radius: 8px;
+    font-weight: 600; font-size: 0.95rem; transition: 0.2s;
+  }
+  .btn-primary { background: var(--teal); color: #06302b; }
+  .btn-primary:hover { background: #2dd4bf; transform: translateY(-2px); }
+  .btn-ghost { border: 1px solid #475569; color: #e2e8f0; margin-left: 12px; }
+  .btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
+  .hero-stats { display: flex; gap: 48px; margin-top: 56px; flex-wrap: wrap; }
+  .stat .num { font-size: 1.9rem; font-weight: 700; color: #fff; }
+  .stat .label { font-size: 0.85rem; color: #94a3b8; }
+
+  /* ---------- About ---------- */
+  .about-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 48px; align-items: start; }
+  .about-text p { margin-bottom: 16px; font-size: 1.02rem; }
+  .info-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 28px; box-shadow: 0 1px 3px rgba(15,36,56,0.06);
+  }
+  .info-card h3 { font-size: 1.05rem; margin-bottom: 14px; }
+  .info-card ul { list-style: none; }
+  .info-card li { padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 0.93rem; }
+  .info-card li:last-child { border-bottom: none; }
+  .info-card li strong { color: var(--navy); display: block; }
+  .info-card + .info-card { margin-top: 20px; }
+
+  /* ---------- Skills ---------- */
+  .skills { background: #fff; }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 24px; }
+  .skill-card {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 12px;
+    padding: 26px; transition: 0.25s;
+  }
+  .skill-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(15,36,56,0.10); border-color: var(--teal); }
+  .skill-card .icon { font-size: 1.5rem; margin-bottom: 12px; }
+  .skill-card h3 { font-size: 1.05rem; margin-bottom: 14px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    background: #e6f7f5; color: var(--teal-dark); border-radius: 999px;
+    padding: 4px 12px; font-size: 0.82rem; font-weight: 500;
+  }
+
+  /* ---------- Experience ---------- */
+  .timeline { position: relative; margin-left: 8px; }
+  .timeline::before {
+    content: ""; position: absolute; left: 0; top: 4px; bottom: 4px;
+    width: 2px; background: var(--border);
+  }
+  .job { position: relative; padding: 0 0 44px 36px; }
+  .job:last-child { padding-bottom: 0; }
+  .job::before {
+    content: ""; position: absolute; left: -6px; top: 6px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--teal); border: 3px solid var(--bg);
+  }
+  .job .period {
+    display: inline-block; font-size: 0.8rem; font-weight: 600; color: var(--teal-dark);
+    background: #e6f7f5; border-radius: 999px; padding: 3px 12px; margin-bottom: 8px;
+  }
+  .job h3 { font-size: 1.2rem; }
+  .job .company { color: var(--slate-light); font-weight: 500; margin-bottom: 12px; }
+  .job ul { padding-left: 20px; }
+  .job li { margin-bottom: 7px; font-size: 0.97rem; }
+
+  /* ---------- Projects ---------- */
+  .projects { background: #fff; }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .project-card {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 12px;
+    padding: 28px; display: flex; flex-direction: column; transition: 0.25s;
+  }
+  .project-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(15,36,56,0.10); border-color: var(--teal); }
+  .project-card .where { font-size: 0.8rem; font-weight: 600; color: var(--teal-dark); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
+  .project-card h3 { font-size: 1.1rem; margin-bottom: 10px; }
+  .project-card p { font-size: 0.95rem; flex: 1; }
+  .project-card .result {
+    margin-top: 16px; font-weight: 700; color: var(--navy); font-size: 0.95rem;
+    border-top: 1px solid var(--border); padding-top: 14px;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: #cbd5e1; }
+  .contact .section-title, .contact h3 { color: #fff; }
+  .contact .section-sub { color: #94a3b8; }
+  .contact-grid { display: flex; flex-wrap: wrap; gap: 20px; }
+  .contact-item {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px; padding: 22px 28px; min-width: 240px; flex: 1;
+    transition: 0.2s;
+  }
+  .contact-item:hover { border-color: var(--teal); }
+  .contact-item .label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8; margin-bottom: 6px; }
+  .contact-item a, .contact-item .value { color: #fff; font-weight: 600; font-size: 0.98rem; word-break: break-word; }
+  .contact-item a:hover { color: var(--teal); }
+
+  footer { background: var(--navy); color: #64748b; text-align: center; padding: 22px; font-size: 0.85rem; }
+
+  /* ---------- Reveal animation ---------- */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 768px) {
+    section { padding: 64px 0; }
+    .hamburger { display: flex; }
+    .nav-links {
+      position: absolute; top: 64px; left: 0; right: 0;
+      background: var(--navy); flex-direction: column; gap: 0;
+      max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+    }
+    .nav-links.open { max-height: 420px; }
+    .nav-links li { border-top: 1px solid rgba(255,255,255,0.08); }
+    .nav-links a { display: block; padding: 15px 24px; }
+    .hero { padding: 80px 0 90px; }
+    .hero-stats { gap: 28px; }
+    .btn-ghost { margin-left: 0; margin-top: 12px; }
+    .about-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">Alex<span>Rivera</span></div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="container">
+    <div class="kicker">Data &amp; Analytics Leadership</div>
+    <h1>Alex Rivera</h1>
+    <div class="role">Director of Data &amp; Analytics</div>
+    <p class="intro">Data and analytics leader with 15 years of experience turning raw data into business decisions — from hands-on analyst to director leading a 14-person team, with measurable cost and revenue impact across retail, financial services, and healthcare.</p>
+    <a href="#experience" class="btn btn-primary">View Experience</a>
+    <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+    <div class="hero-stats">
+      <div class="stat"><div class="num">15</div><div class="label">Years of experience</div></div>
+      <div class="stat"><div class="num">14</div><div class="label">Person team led</div></div>
+      <div class="stat"><div class="num">40+</div><div class="label">Teams on self-service BI</div></div>
+      <div class="stat"><div class="num">38%</div><div class="label">Infra cost reduction</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="container">
+    <div class="accent-bar"></div>
+    <h2 class="section-title">About Me</h2>
+    <p class="section-sub">From hands-on analyst to data organization leader.</p>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <p>I'm a data and analytics leader with 15 years of experience turning raw data into business decisions. My career has progressed from hands-on analyst to director leading a 14-person team of engineers, analysts, and BI developers.</p>
+        <p>I have a track record of building modern data platforms, launching self-service BI programs, and delivering measurable cost and revenue impact across three industries: retail, financial services, and healthcare.</p>
+        <p>Beyond the technology, I focus on the people and processes around data — building teams, establishing data governance, managing stakeholders and vendors, and delivering with agile methods.</p>
+      </div>
+      <div>
+        <div class="info-card">
+          <h3>Education</h3>
+          <ul>
+            <li><strong>M.S., Data Science</strong>Lakeview State University · 2013</li>
+            <li><strong>B.S., Computer Science</strong>Harborview University · 2010</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>Certifications</h3>
+          <ul>
+            <li><strong>SnowPro Core Certification</strong>2023</li>
+            <li><strong>Azure Data Engineer Associate</strong>Microsoft Certified · 2021</li>
+            <li><strong>Tableau Desktop Specialist</strong>2018</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills" class="skills">
+  <div class="container">
+    <div class="accent-bar"></div>
+    <h2 class="section-title">Skills</h2>
+    <p class="section-sub">Core tools and capabilities across the modern data stack.</p>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="icon">⌨️</div>
+        <h3>Languages &amp; Tools</h3>
+        <div class="tags">
+          <span class="tag">SQL</span><span class="tag">Python</span><span class="tag">R</span>
+          <span class="tag">dbt</span><span class="tag">Apache Airflow</span><span class="tag">Spark</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="icon">📊</div>
+        <h3>BI &amp; Visualization</h3>
+        <div class="tags">
+          <span class="tag">Power BI</span><span class="tag">Tableau</span><span class="tag">Looker</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="icon">☁️</div>
+        <h3>Cloud &amp; Data Platforms</h3>
+        <div class="tags">
+          <span class="tag">Snowflake</span><span class="tag">Azure Synapse</span><span class="tag">Azure Data Factory</span>
+          <span class="tag">AWS Redshift</span><span class="tag">AWS Glue</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="icon">🧭</div>
+        <h3>Leadership</h3>
+        <div class="tags">
+          <span class="tag">Team building</span><span class="tag">Data governance</span><span class="tag">Stakeholder management</span>
+          <span class="tag">Agile delivery</span><span class="tag">Vendor management</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience">
+  <div class="container">
+    <div class="accent-bar"></div>
+    <h2 class="section-title">Experience</h2>
+    <p class="section-sub">Fifteen years across financial services, retail, healthcare, and insurance.</p>
+    <div class="timeline">
+      <div class="job reveal">
+        <span class="period">2021 – Present</span>
+        <h3>Director of Data &amp; Analytics</h3>
+        <div class="company">Northgate Financial Group</div>
+        <ul>
+          <li>Lead a 14-person data organization (engineers, analysts, BI developers) supporting 2,000+ employees.</li>
+          <li>Directed migration from on-premise warehouse to Snowflake, cutting reporting infrastructure costs by 38%.</li>
+          <li>Launched a self-service Power BI program adopted by 40+ business teams, reducing ad-hoc report requests by 60%.</li>
+          <li>Established company-wide data governance council and data quality standards for regulatory reporting.</li>
+        </ul>
+      </div>
+      <div class="job reveal">
+        <span class="period">2017 – 2021</span>
+        <h3>Analytics Manager</h3>
+        <div class="company">Vertex Retail Systems</div>
+        <ul>
+          <li>Built and managed a 6-person analytics team supporting merchandising, supply chain, and e-commerce.</li>
+          <li>Delivered demand-forecasting models that reduced overstock by $4.2M annually across 300 stores.</li>
+          <li>Introduced dbt and Airflow to replace manual ETL, cutting pipeline failures by 75%.</li>
+          <li>Partnered with C-suite on KPI redesign; monthly executive dashboard became the standard reporting tool.</li>
+        </ul>
+      </div>
+      <div class="job reveal">
+        <span class="period">2014 – 2017</span>
+        <h3>Senior Data Engineer</h3>
+        <div class="company">BlueRiver Health Analytics</div>
+        <ul>
+          <li>Designed HIPAA-compliant data pipelines integrating claims, EHR, and billing data for 5 hospital clients.</li>
+          <li>Rebuilt nightly batch processing in Spark, reducing runtime from 9 hours to 45 minutes.</li>
+          <li>Mentored 3 junior analysts, two of whom were promoted to engineering roles.</li>
+        </ul>
+      </div>
+      <div class="job reveal">
+        <span class="period">2011 – 2014</span>
+        <h3>Data Analyst → Senior Data Analyst</h3>
+        <div class="company">Cedarstone Insurance</div>
+        <ul>
+          <li>Automated monthly regulatory reports in SQL and Python, saving 30 analyst-hours per month.</li>
+          <li>Built claims-fraud detection queries credited with flagging $850K in suspicious claims in the first year.</li>
+          <li>Promoted to Senior Analyst after 18 months.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects" class="projects">
+  <div class="container">
+    <div class="accent-bar"></div>
+    <h2 class="section-title">Key Projects &amp; Initiatives</h2>
+    <p class="section-sub">Selected initiatives from my professional experience.</p>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="where">Northgate Financial Group</div>
+        <h3>Snowflake Cloud Migration</h3>
+        <p>Directed the migration from an on-premise warehouse to Snowflake for an organization of 2,000+ employees.</p>
+        <div class="result">↓ 38% reporting infrastructure costs</div>
+      </div>
+      <div class="project-card reveal">
+        <div class="where">Northgate Financial Group</div>
+        <h3>Self-Service Power BI Program</h3>
+        <p>Launched a self-service BI program adopted by 40+ business teams across the company.</p>
+        <div class="result">↓ 60% ad-hoc report requests</div>
+      </div>
+      <div class="project-card reveal">
+        <div class="where">Vertex Retail Systems</div>
+        <h3>Demand-Forecasting Models</h3>
+        <p>Delivered forecasting models supporting merchandising and supply chain across 300 stores.</p>
+        <div class="result">↓ $4.2M annual overstock</div>
+      </div>
+      <div class="project-card reveal">
+        <div class="where">Vertex Retail Systems</div>
+        <h3>Modern ETL with dbt &amp; Airflow</h3>
+        <p>Introduced dbt and Airflow to replace manual ETL processes across the analytics stack.</p>
+        <div class="result">↓ 75% pipeline failures</div>
+      </div>
+      <div class="project-card reveal">
+        <div class="where">BlueRiver Health Analytics</div>
+        <h3>Spark Batch Processing Rebuild</h3>
+        <p>Rebuilt nightly batch processing in Spark for HIPAA-compliant pipelines serving 5 hospital clients.</p>
+        <div class="result">9 hours → 45 minutes runtime</div>
+      </div>
+      <div class="project-card reveal">
+        <div class="where">Cedarstone Insurance</div>
+        <h3>Claims-Fraud Detection</h3>
+        <p>Built claims-fraud detection queries used to surface suspicious activity in insurance claims.</p>
+        <div class="result">$850K flagged in first year</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="accent-bar"></div>
+    <h2 class="section-title">Contact</h2>
+    <p class="section-sub">Let's talk about data strategy, analytics teams, or your next platform build.</p>
+    <div class="contact-grid reveal">
+      <div class="contact-item">
+        <div class="label">Email</div>
+        <a href="mailto:alex.rivera@example.com">alex.rivera@example.com</a>
+      </div>
+      <div class="contact-item">
+        <div class="label">Phone</div>
+        <a href="tel:+15550137788">(555) 013-7788</a>
+      </div>
+      <div class="contact-item">
+        <div class="label">LinkedIn</div>
+        <a href="https://linkedin.com/in/alexrivera-example" target="_blank" rel="noopener">linkedin.com/in/alexrivera-example</a>
+      </div>
+      <div class="contact-item">
+        <div class="label">Location</div>
+        <div class="value">Springfield, USA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© <span id="year"></span> Alex Rivera · Director of Data &amp; Analytics</footer>
+
+<script>
+  // Current year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => navLinks.classList.remove('open'))
+  );
+
+  // Scroll-reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
